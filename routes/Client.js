@@ -6,7 +6,7 @@ router.post('/create', async (req, res) => {
     try {
         const { cname, Email, phonenumber } = req.body;
 
-        if (!cname || !Email || !phonenumber) {
+        if (!cname || !phonenumber) {
             return res.status(400).json({ msg: "All fields required!" });
         }
 
