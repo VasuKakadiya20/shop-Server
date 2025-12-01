@@ -14,7 +14,8 @@ const ItemSchema = new mongoose.Schema({
             hsn: { type: String, required: true }
         }
     ],
-    totalitems:{type:Number , required:true}
+    totalitems:{type:Number , required:true},
+    addgst:{type:String, required:true}
 });
 
 module.exports.Item = mongoose.model('item', ItemSchema);

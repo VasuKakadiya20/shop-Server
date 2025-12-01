@@ -13,14 +13,15 @@ router.post("/create", async (req, res) => {
     }
 
     const invoiceNo = "INV" + nextNumber.toString().padStart(4, "0");
-    const { cname, Payment, Date, items } = req.body;
+    const { cname, Payment, Date, items ,addgst} = req.body;
     const newItem = new Item({
       invoiceNo,
       cname,
       Payment,
       Date,
       items,
-      totalitems: items.length  
+      totalitems: items.length,
+      addgst,
     });
 
     await newItem.save();
@@ -65,7 +66,8 @@ router.put("/:id" ,async(req,res) =>{
     Date:req.body.Date,
     invoiceNo:req.body.invoiceNo,
     items:req.body.items,
-    totalitems:req.body.totalitems
+    totalitems:req.body.totalitems,
+    addgst:req.body.addgst
    }
     const updateitem = await Item.findByIdAndUpdate(req.params.id, updatedata, { new: true });
 
